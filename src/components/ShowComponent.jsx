@@ -9,8 +9,8 @@ export const ShowComponent = () => {
   };
   useEffect(() => {
     fetchPosts();
-  }, []);
-  console.log(posts, "2023");
+    console.log(posts, "updated.posts");
+  }, [posts]);
   const deletePost = async (id, e) => {
     var response = await postServices.deletePost(id);
     if (response.data.success === true) {
@@ -35,9 +35,9 @@ export const ShowComponent = () => {
               <th>Edit</th>
             </thead>
             <tbody>
-              {posts.data.data.map((post) => {
+              {posts.data.data.map((post,key) => {
                 return (
-                  <tr>
+                  <tr id={key}>
                     <td>{post.title}</td>
                     <td>{post.date}</td>
                     <td id="img-td">
@@ -57,7 +57,12 @@ export const ShowComponent = () => {
                       </button>
                     </td>
                     <td>
-                      <UpdateModalComponent />
+                      <UpdateModalComponent
+                        id={post._id}
+                        title={post.title}
+                        date={post.date}
+                        // image={post.image}
+                      />
                     </td>
                   </tr>
                 );
