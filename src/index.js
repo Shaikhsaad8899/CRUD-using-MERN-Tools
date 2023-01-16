@@ -11,7 +11,7 @@ export default function Index() {
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/show" element={<ShowComponent />} />
+        {/* <Route path="/show" element={<ShowComponent />} /> */}
       </Routes>
     </BrowserRouter>
   );
